@@ -4,6 +4,8 @@ import time
 import base64
 import json
 
+from .models import Product
+
 # =========================
 # CONFIG
 # =========================
@@ -206,3 +208,35 @@ def group_by_category(products):
         categories.setdefault(category, []).append(product)
 
     return categories
+
+def save_products_to_db(products):
+    print("💾 Guardando productos en DB...")
+
+    for item in products:
+        model = item.get("productModel", {})
+        variants = item.get("variants", [])
+
+        if not variants:
+            continue
+
+        variant = variants[0]
+
+        category = model.get("filters", {}).get("familyFilterable") or "OTROS"
+        subcategory = model.get("filters", {}).get("subFamilyFilterable")
+
+        try:
+            price = float(variant["pricing"]["priceMx"][0]["amount"])
+        except:
+            price = 0
+
+        Product.objects.update_or_create(
+            sku=variant.get("sku"),
+            defaults={
+                "name": model.get("nameProductModel"),
+                "price": price,
+                "image": (model.get("media", {}).get("mainImages") or [None])[0],
+                "color": variant.get("color"),
+                "category": category,
+                "subcategory": subcategory,
+            }
+        )
