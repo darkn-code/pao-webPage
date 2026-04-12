@@ -23,7 +23,7 @@ services:
   web:
     build: .
     container_name: ecommerce_backend
-    command: gunicorn project_pao.wsgi:application --workers 1 --threads 2 --bind 0.0.0.0:8000
+    command: gunicorn ecommerce.wsgi:application --workers 1 --threads 2 --bind 0.0.0.0:8000
     volumes:
       - ./project-pao:/app
     ports:
