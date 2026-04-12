@@ -16,11 +16,14 @@ services:
       - "${MYSQL_PORT}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    command: >
+      --innodb-buffer-pool-size=128M
+      --innodb-log-file-size=64M
 
   web:
     build: .
     container_name: ecommerce_backend
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn app.wsgi:application --workers 1 --threads 2 --bind 0.0.0.0:8000
     volumes:
       - ./project-pao:/app
     ports:
