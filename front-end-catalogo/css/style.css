@@ -18,6 +18,10 @@ body {
     margin: 0;
     font-family: 'Glacial Indifference', Arial, sans-serif;
     background: #ffe6e3;
+    background-image: url('../img/fondo.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center top;
     color: #342d2f;
 }
 
@@ -30,9 +34,6 @@ body {
     min-height: 178px;
     margin: 0 auto;
     padding: 34px 28px 0;
-    background:
-        linear-gradient(to bottom, #fbfbfb 0 68%, transparent 68%),
-        #ffe6e3;
     box-sizing: border-box;
 }
 
