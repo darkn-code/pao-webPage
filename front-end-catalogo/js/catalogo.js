@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000/api/mothers-day/products/';
+const API_BASE_URL = 'https://pao-creacionesph.darkn-47.com/api/mothers-day/products/';
 
 const productsGrid = document.querySelector('#products-grid');
 
