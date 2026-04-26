@@ -1,25 +1,99 @@
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('../fonts/glacial-indifference-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url('../fonts/glacial-indifference-bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #f5eeee;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    background: #ffe6e3;
     color: #342d2f;
+}
+
+.catalog-header {
+    display: grid;
+    grid-template-columns: 160px 1fr 190px;
+    align-items: start;
+    gap: 24px;
+    max-width: 980px;
+    min-height: 178px;
+    margin: 0 auto;
+    padding: 34px 28px 0;
+    background:
+        linear-gradient(to bottom, #fbfbfb 0 68%, transparent 68%),
+        #ffe6e3;
+    box-sizing: border-box;
+}
+
+.brand-logo {
+    width: 118px;
+    height: auto;
+    margin-top: 0;
+}
+
+.header-title {
+    text-align: center;
+}
+
+.mother-day {
+    text-align: center;
+    color: #efc7c2;
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 0.9;
+}
+
+.mother-day p {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.mother-day strong {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.mother-day span {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 8px;
+    background: #f5dad7;
+    color: #dc9eae;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
 }
 
 .container {
     text-align: center;
-    padding: 40px 20px;
+    padding: 34px 20px 40px;
 }
 
 h1 {
-    color: #8a3b5c;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #b64873;
     font-size: 36px;
-    margin-bottom: 5px;
+    margin: 0;
 }
 
 h2 {
-    color: #c47a8a;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #df8caf;
     font-weight: normal;
-    margin-bottom: 40px;
+    margin: 6px 0 0;
 }
 
 .status {
@@ -52,18 +126,37 @@ h2 {
 .card p {
     margin: 10px 0;
     color: #7a4a4a;
+    font-size: 24px;
+    line-height: 1.25;
 }
 
 .card span {
     display: block;
     font-weight: bold;
     color: #5a8d3b;
-    font-size: 18px;
+    font-size: 32px;
 }
 
 @media (max-width: 520px) {
+    .catalog-header {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        min-height: 0;
+        padding: 24px 18px 30px;
+        background: #fbfbfb;
+    }
+
+    .brand-logo {
+        margin: 0 auto;
+        width: 100px;
+    }
+
     h1 {
         font-size: 28px;
+    }
+
+    h2 {
+        margin-bottom: 12px;
     }
 
     .container {
