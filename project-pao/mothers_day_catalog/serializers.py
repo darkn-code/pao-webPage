@@ -21,6 +21,15 @@ class MothersDayProductSerializer(serializers.ModelSerializer):
             'updated_at',
         ]
         read_only_fields = ['id', 'image_url', 'created_at', 'updated_at']
+        extra_kwargs = {
+            'image': {'required': False},
+        }
+
+    def validate(self, attrs):
+        if self.instance is None and not attrs.get('image'):
+            raise serializers.ValidationError({'image': 'La imagen es requerida.'})
+
+        return attrs
 
     def get_image_url(self, product):
         if not product.image:

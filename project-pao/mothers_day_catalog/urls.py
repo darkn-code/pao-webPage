@@ -1,11 +1,13 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-from .views import MothersDayProductViewSet
-
-router = DefaultRouter()
-router.register('products', MothersDayProductViewSet, basename='mothers-day-products')
+from .views import (
+    MothersDayProductListCreateAPIView,
+    MothersDayProductRetrieveUpdateDestroyAPIView,
+)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('products/', MothersDayProductListCreateAPIView.as_view(), name='mothers-day-product-list-create'),
+    path('products/<int:pk>/', MothersDayProductRetrieveUpdateDestroyAPIView.as_view(), name='mothers-day-product-detail'),
+    path('products/<int:pk>/edit/', MothersDayProductRetrieveUpdateDestroyAPIView.as_view(), name='mothers-day-product-edit'),
+    path('products/<int:pk>/delete/', MothersDayProductRetrieveUpdateDestroyAPIView.as_view(), name='mothers-day-product-delete'),
 ]
