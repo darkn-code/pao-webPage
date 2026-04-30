@@ -142,7 +142,8 @@ h2 {
 }
 
 .card span {
-    display: none;
+    display: block;
+    margin-top: 18px;
     font-weight: bold;
     color: #5a8d3b;
     font-size: 32px;
